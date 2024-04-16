@@ -67,6 +67,8 @@ body {
 
 main {
   width: 80%;
+  height: 50vh;
+  overflow-y: scroll;
   margin: auto;
   margin-top: 10rem;
   display: flex;
@@ -136,6 +138,14 @@ section{
 }
 .done{
   display: none;
+}
+.down{
+  width: 50%;
+  margin: auto;
+  margin-top: 30px;
+}
+::-webkit-scrollbar{
+display: none;
 }
 
 .input-container {
@@ -210,12 +220,12 @@ transform: translateY(-1px);
 
 
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
 body{
   width: 900px;
 }
   main{
-    width: 80%;
+    width: 50%;
     margin: auto;
     margin-top: 80px;
   }
@@ -233,15 +243,14 @@ body{
     padding: 1rem;
     border-radius: 0.8rem;
   }
-}
+} */
 
 
 
 @media (max-width: 430px) {
 main{
-  width: 100%;
+  width: 80%;
 }
-
 
 h2 {
   width: 100%;
@@ -249,11 +258,25 @@ h2 {
   color: white;
   font-size: 2.5rem;
 }
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  margin: auto;
+}
+
+.input-container{
+  flex-direction: column;
+}
 }
 
 
-@media (max-width: 300px){
-.input-container {
-    flex-direction: column;
-  }
-}
