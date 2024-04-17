@@ -226,7 +226,7 @@ body{
     margin: auto;
   }
 
-  .input-container {
+  /* .input-container {
     flex-direction: column;
-  }
+  } */
 }
