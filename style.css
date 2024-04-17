@@ -27,22 +27,23 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: black;
+  background:#0e1013;
   padding: 30px;
 }
 
 h2 {
   width: 100%;
   text-align: center;
-  color: white;
+  color:white;
   font-size: 4rem;
 }
 section {
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
 }
 
 .delete {
@@ -52,12 +53,12 @@ section {
 .task {
   width: 100%;
   /* position: relative; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   display: flex;
   align-items: center;
-
+  gap: 1rem;
 }
-.text{
+.text {
   width: 88%;
 }
 
@@ -177,30 +178,21 @@ section {
   transform: translateY(5px);
 }
 
-/* @media (max-width: 900px) {
-body{
-  width: 900px;
-}
-  main{
-    width: 50%;
-    margin: auto;
-    margin-top: 80px;
-  }
-  .input-container{
+@media (max-width: 767px) {
+  main {
     width: 80%;
     margin: auto;
+    margin-top: 50px;
   }
-  
+  .task{
+  width: 100%;
+  }
 
-  .input-container input {
-    border-radius: 0.8rem;
-  }
 
-  .input-container button {
-    padding: 1rem;
-    border-radius: 0.8rem;
+  .text {
+    width: 80%;
   }
-} */
+}
 
 @media (max-width: 430px) {
   main {
@@ -213,8 +205,11 @@ body{
     color: white;
     font-size: 2.5rem;
   }
+  .task{
+    width: 100%;
+  }
 
-  .text{
+  .text {
     width: 60%;
   }
 
