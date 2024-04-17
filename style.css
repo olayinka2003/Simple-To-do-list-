@@ -39,6 +39,7 @@ h2 {
 }
 section {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
@@ -53,6 +54,7 @@ section {
   /* position: relative; */
   justify-content: space-between;
   display: flex;
+  align-items: center;
 
 }
 .text{
@@ -69,6 +71,7 @@ section {
   align-items: center;
   gap: 0.3rem;
   margin-top: 3px;
+  padding: 0.5rem;
 }
 .icon img {
   width: 25%;
