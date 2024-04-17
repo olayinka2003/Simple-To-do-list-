@@ -56,7 +56,7 @@ section {
 
 }
 .text{
-  width: 78%;
+  width: 88%;
 }
 
 .task p {
@@ -211,6 +211,10 @@ body{
     font-size: 2.5rem;
   }
 
+  .text{
+    width: 65%;
+  }
+
   .btn {
     position: relative;
     overflow: hidden;
@@ -226,7 +230,7 @@ body{
     margin: auto;
   }
 
-  /* .input-container {
+  .input-container {
     flex-direction: column;
-  } */
+  }
 }
