@@ -107,6 +107,7 @@ section {
 
 .input-container {
   display: flex;
+  width: 100%;
   background: white;
   border-radius: 1rem;
   background: linear-gradient(135deg, #23272f 0%, #14161a 100%);
@@ -187,7 +188,37 @@ section {
   .task{
   width: 100%;
   }
+  .btn {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: #3d3a4e;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+    margin: auto;
+  }
+  .down {
+  width: 50%;
+  margin: auto;
+  margin-top: 30px;
+}
 
+.input-container {
+width: 100%;
+  display: flex;
+  background: white;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #23272f 0%, #14161a 100%);
+  box-shadow: 10px 10px 20px #0e1013, -10px -10px 40px #383e4b;
+  padding: 0.3rem;
+  gap: 0.3rem;
+  display: none;
+}
 
   .text {
     width: 80%;
