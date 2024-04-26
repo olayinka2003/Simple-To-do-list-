@@ -1,5 +1,3 @@
-
-
 const newTask = document.querySelector(".btn");
 const inputField = document.querySelector(".input-container");
 const textarea = document.querySelector(".input-bar");
@@ -11,14 +9,17 @@ let editIcon = document.querySelector(".edit");
 // let taskContainer = [{ done: 0, progress: 0 }];
 let done = document.querySelector(".done");
 let onProgress = document.querySelector(".progress");
-let taskContainer = [{ name: "Task 1", progress: 0 }];
-let donContainer = [{ name: "Task 2", done: 0 }];
+// let taskContainer = [{ name: "Task 1", progress: 0 }];
+// let donContainer = [{ name: "Task 2", done: 0 }];
 
 newTask.addEventListener("click", function () {
   inputField.style.display = "flex";
 });
 
+
+
 add.addEventListener("click", function () {
+  const textarea = document.querySelector(".input-bar");
   let textLength = textarea.value.length;
   if (textLength === 0) {
     alert("Please enter your task");
@@ -26,7 +27,7 @@ add.addEventListener("click", function () {
     let task = document.createElement("div");
     task.className = "task";
 
-    task.innerHTML = `  <div class="text"><p>${textarea.value}</p></div>
+    task.innerHTML = `<div class="text"><p>${textarea.value}</p></div>
     <div class="icon">
       <img src="img/trash 1.svg" class="delete" />
       <img src="img/pencil-square 1.svg" class="edit" />
@@ -36,12 +37,14 @@ add.addEventListener("click", function () {
     display[0].appendChild(task);
     textarea.value = "";
     inputField.style.display = "none";
-    
 
     let deleteIcon = document.querySelectorAll(".delete");
     deleteIcon.forEach((btn) => {
       btn.addEventListener("click", del);
     });
+    // for(i=0; i<deleteIcon.length; i++){
+    //   deleteIcon[i].addEventListener("click", del)
+    // }
 
     let checkmarkIcon = document.querySelectorAll(".checkmark");
     checkmarkIcon.forEach((btn) => {
@@ -61,28 +64,19 @@ add.addEventListener("click", function () {
 
 
 
-function del(e) {
-  if (e.target.classList.contains("delete")) {
-    e.target.parentElement.parentElement.remove();
-    taskContainer.forEach((task) => {
-      task.progress--;
-      onProgress.innerHTML = `Todo On Progress: ${task.progress}`;
-    });
-  }
-}
-
 function check(e) {
   if (e.target.classList.contains("checkmark")) {
     e.target.parentElement.parentElement.firstElementChild.style.textDecoration =
       "line-through";
     e.target.parentElement.parentElement.firstElementChild.style.color = "red";
 
-    // DoneBar(donContainer)
+  }
+}
 
-    // taskContainer.forEach((task) => {
-    //   task.progress--;
-    //   onProgress.innerHTML = `Todo On Progress: ${task.progress}`;
-    // });
+
+function del(e) {
+  if (e.target.classList.contains ("delete")) {
+    e.target.parentElement.parentElement.remove();
   }
 }
 
@@ -92,16 +86,6 @@ function undo(e) {
       "none";
     e.target.parentElement.parentElement.firstElementChild.style.color =
       "black";
-
-    // donContainer.forEach((don) => {
-    //   don.done--;
-    //   done.innerHTML = `Todo Done: ${don.done}`;
-    // })
-
-    // taskContainer.forEach((task) => {
-    //   task.progress++;
-    //   onProgress.innerHTML = `Todo On Progress: ${task.progress}`;
-    // });
   }
 }
 
@@ -121,7 +105,7 @@ function edit(e) {
 //   });
 //   console.log(taskContainer);
 // }
- 
+
 // function DoneBar() {
 //   donContainer.forEach((don) => {
 //     don.done++;
