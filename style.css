@@ -49,6 +49,15 @@ section {
 .delete {
   cursor: pointer;
 }
+.edit{
+  cursor: pointer;
+}
+.undo{
+  cursor: pointer;
+}
+.checkmark {
+  cursor: pointer;
+}
 
 .task {
   width: 100%;

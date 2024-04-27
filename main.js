@@ -1,7 +1,8 @@
 const newTask = document.querySelector(".btn");
 const inputField = document.querySelector(".input-container");
 const textarea = document.querySelector(".input-bar");
-const display = document.getElementsByTagName("section");
+// const display = document.getElementsByTagName("section");
+const display = document.querySelector(".displaytask");
 let add = document.querySelector(".button");
 let task = document.querySelector(".task");
 let progBar = document.querySelector(".prog");
@@ -12,11 +13,17 @@ let onProgress = document.querySelector(".progress");
 // let taskContainer = [{ name: "Task 1", progress: 0 }];
 // let donContainer = [{ name: "Task 2", done: 0 }];
 
+let recover = localStorage.getItem("allTasks");
+display.innerHTML = recover;
+
 newTask.addEventListener("click", function () {
   inputField.style.display = "flex";
 });
 
-
+// let savedTask = localStorage.getItem("task");
+// if(savedTask) {
+//  task.innerHTML = savedTask++;
+// }
 
 add.addEventListener("click", function () {
   const textarea = document.querySelector(".input-bar");
@@ -34,14 +41,18 @@ add.addEventListener("click", function () {
       <img src="img/check-circle 1.svg" class="checkmark" />
       <img src="img/undo.svg" class="undo">
     </div>`;
-    display[0].appendChild(task);
+
+    // display[0].appendChild(task);
+
+    display.appendChild(task);
+    localStorage.setItem("allTasks", display.innerHTML);
     textarea.value = "";
     inputField.style.display = "none";
-
     let deleteIcon = document.querySelectorAll(".delete");
     deleteIcon.forEach((btn) => {
       btn.addEventListener("click", del);
     });
+
     // for(i=0; i<deleteIcon.length; i++){
     //   deleteIcon[i].addEventListener("click", del)
     // }
@@ -62,20 +73,16 @@ add.addEventListener("click", function () {
   }
 });
 
-
-
 function check(e) {
   if (e.target.classList.contains("checkmark")) {
     e.target.parentElement.parentElement.firstElementChild.style.textDecoration =
       "line-through";
     e.target.parentElement.parentElement.firstElementChild.style.color = "red";
-
   }
 }
 
-
 function del(e) {
-  if (e.target.classList.contains ("delete")) {
+  if (e.target.classList.contains("delete")) {
     e.target.parentElement.parentElement.remove();
   }
 }
@@ -139,3 +146,4 @@ function edit(e) {
 // })
 
 // console.log(squares);
+// console.log(display);
