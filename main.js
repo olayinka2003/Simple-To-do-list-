@@ -15,6 +15,32 @@ let onProgress = document.querySelector(".progress");
 
 let recover = localStorage.getItem("allTasks");
 display.innerHTML = recover;
+window.addEventListener("DOMContentLoaded", function () {
+  // Restore content from local storage
+  let recover = localStorage.getItem("allTasks");
+  display.innerHTML = recover;
+
+  // Attach event listeners to the recovered content
+  let deleteIcon = document.querySelectorAll(".delete");
+  deleteIcon.forEach((btn) => {
+    btn.addEventListener("click", del);
+  });
+
+  let editIcon = document.querySelectorAll(".edit");
+  editIcon.forEach((btn) => {
+    btn.addEventListener("click", edit);
+  });
+
+  let checkIcon = document.querySelectorAll(".checkmark");
+  checkIcon.forEach((btn) => {
+    btn.addEventListener("click", check);
+  });
+
+  let undoIcon = document.querySelectorAll(".undo");
+  undoIcon.forEach((btn) => {
+    btn.addEventListener("click", undo);
+  });
+});
 
 newTask.addEventListener("click", function () {
   inputField.style.display = "flex";
