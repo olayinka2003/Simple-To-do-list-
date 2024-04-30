@@ -7,20 +7,15 @@ let add = document.querySelector(".button");
 let task = document.querySelector(".task");
 let progBar = document.querySelector(".prog");
 let editIcon = document.querySelector(".edit");
-// let taskContainer = [{ done: 0, progress: 0 }];
 let done = document.querySelector(".done");
 let onProgress = document.querySelector(".progress");
 // let taskContainer = [{ name: "Task 1", progress: 0 }];
 // let donContainer = [{ name: "Task 2", done: 0 }];
 
-let recover = localStorage.getItem("allTasks");
-display.innerHTML = recover;
 window.addEventListener("DOMContentLoaded", function () {
-  // Restore content from local storage
   let recover = localStorage.getItem("allTasks");
   display.innerHTML = recover;
 
-  // Attach event listeners to the recovered content
   let deleteIcon = document.querySelectorAll(".delete");
   deleteIcon.forEach((btn) => {
     btn.addEventListener("click", del);
@@ -46,11 +41,6 @@ newTask.addEventListener("click", function () {
   inputField.style.display = "flex";
 });
 
-// let savedTask = localStorage.getItem("task");
-// if(savedTask) {
-//  task.innerHTML = savedTask++;
-// }
-
 add.addEventListener("click", function () {
   const textarea = document.querySelector(".input-bar");
   let textLength = textarea.value.length;
@@ -68,8 +58,6 @@ add.addEventListener("click", function () {
       <img src="img/undo.svg" class="undo">
     </div>`;
 
-    // display[0].appendChild(task);
-
     display.appendChild(task);
     localStorage.setItem("allTasks", display.innerHTML);
     textarea.value = "";
@@ -83,13 +71,13 @@ add.addEventListener("click", function () {
     //   deleteIcon[i].addEventListener("click", del)
     // }
 
-    let checkmarkIcon = document.querySelectorAll(".checkmark");
-    checkmarkIcon.forEach((btn) => {
-      btn.addEventListener("click", check);
-    });
     let editIcon = document.querySelectorAll(".edit");
     editIcon.forEach((btn) => {
       btn.addEventListener("click", edit);
+    });
+    let checkmarkIcon = document.querySelectorAll(".checkmark");
+    checkmarkIcon.forEach((btn) => {
+      btn.addEventListener("click", check);
     });
 
     let undoIcon = document.querySelectorAll(".undo");
@@ -98,27 +86,56 @@ add.addEventListener("click", function () {
     });
   }
 });
+function delFromLocalStorage(task) {
+  let allTasks = localStorage.getItem("allTasks");
+  let updatedTasks = allTasks.replace(task.outerHTML, "");
+  localStorage.setItem("allTasks", updatedTasks);
+}
+function del(event) {
+  let task = event.target.closest(".task");
+  task.remove();
+  delFromLocalStorage(task);
+}
+
+function updateCheck(task) {
+  let thisTasks = localStorage.getItem("allTasks");
+  thisTasks = task;
+  console.log(thisTasks);
+  // let checkedTasks = thisTasks.replace(task, currentTask);
+  localStorage.setItem("allTasks", thisTasks.outerHTML);
+}
+
+function updateUndo(task) {
+  let undoneTasks = localStorage.getItem("allTasks");
+  undoneTasks = task;
+  localStorage.setItem("allTasks", undoneTasks.outerHTML);
+}
+
+function updateEdit(task) {
+  let editTasks = localStorage.getItem("allTasks");
+  editTasks = task;
+  localStorage.setItem("allTasks", editTasks.outerHTML);
+}
 
 function check(e) {
   if (e.target.classList.contains("checkmark")) {
-    e.target.parentElement.parentElement.firstElementChild.style.textDecoration =
-      "line-through";
-    e.target.parentElement.parentElement.firstElementChild.style.color = "red";
-  }
-}
-
-function del(e) {
-  if (e.target.classList.contains("delete")) {
-    e.target.parentElement.parentElement.remove();
+    let task = e.target.closest(".task");
+    console.log("Check clicked, task element:", task);
+    task.firstElementChild.style.textDecoration = "line-through";
+    task.firstElementChild.style.color = "red";
+    updateCheck(task);
   }
 }
 
 function undo(e) {
   if (e.target.classList.contains("undo")) {
-    e.target.parentElement.parentElement.firstElementChild.style.textDecoration =
-      "none";
-    e.target.parentElement.parentElement.firstElementChild.style.color =
-      "black";
+    let task = e.target.closest(".task");
+    console.log("Undo clicked, task element:", task);
+    task.firstElementChild.style.textDecoration = "none";
+    task.firstElementChild.style.color = "black";
+    updateUndo(task);
+    // console.log("Undo clicked, calling delFromLocalStorage");
+    // delFromLocalStorage(task);
   }
 }
 
@@ -128,7 +145,11 @@ function edit(e) {
   let editedText = prompt("Enter A New Text", mainText);
   if (editedText === null || editedText === undefined) {
     return;
-  } else text.querySelector("p").textContent = editedText;
+  } else {
+    text.querySelector("p").textContent = editedText;
+   
+  }
+  updateEdit(task);
 }
 
 // function updateArrayObj() {
@@ -146,30 +167,3 @@ function edit(e) {
 //   })
 //   console.log(donContainer);
 // }
-
-// function storage() {
-//     localStorage.setItem("data", add.innerHTML)
-// }
-
-// // localStorage.setItem("data", task)
-
-// function showStorage() {
-//   localStorage.getItem("data");
-// }
-// showStorage();
-
-// const ages = [32, 33, 16, 40];
-// const result = ages.filter(check);
-// console.log(result);
-
-// function check(age) {
-//   return  age >= 18;
-// }
-
-// const numbers = [1, 2, 3, 4 ];
-// const squares = numbers.map(function(n){
-//   return n * n;
-// })
-
-// console.log(squares);
-// console.log(display);

@@ -59,6 +59,11 @@ section {
   cursor: pointer;
 }
 
+.checkgroup {
+  color: red;
+ text-decoration: line-through;
+}
+
 .task {
   width: 100%;
   /* position: relative; */
@@ -270,5 +275,6 @@ width: 100%;
 
   .input-container {
     flex-direction: column;
+    width: 100%;
   }
 }
