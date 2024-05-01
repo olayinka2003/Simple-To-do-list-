@@ -1,16 +1,13 @@
 const newTask = document.querySelector(".btn");
 const inputField = document.querySelector(".input-container");
 const textarea = document.querySelector(".input-bar");
-// const display = document.getElementsByTagName("section");
 const display = document.querySelector(".displaytask");
-let add = document.querySelector(".button");
 let task = document.querySelector(".task");
+let add = document.querySelector(".button");
 let progBar = document.querySelector(".prog");
 let editIcon = document.querySelector(".edit");
 let done = document.querySelector(".done");
 let onProgress = document.querySelector(".progress");
-// let taskContainer = [{ name: "Task 1", progress: 0 }];
-// let donContainer = [{ name: "Task 2", done: 0 }];
 
 window.addEventListener("DOMContentLoaded", function () {
   let recover = localStorage.getItem("allTasks");
@@ -86,6 +83,7 @@ add.addEventListener("click", function () {
     });
   }
 });
+
 function delFromLocalStorage(task) {
   let allTasks = localStorage.getItem("allTasks");
   let updatedTasks = allTasks.replace(task.outerHTML, "");
@@ -101,20 +99,19 @@ function updateCheck(task) {
   let thisTasks = localStorage.getItem("allTasks");
   thisTasks = task;
   console.log(thisTasks);
-  // let checkedTasks = thisTasks.replace(task, currentTask);
   localStorage.setItem("allTasks", thisTasks.outerHTML);
 }
 
 function updateUndo(task) {
   let undoneTasks = localStorage.getItem("allTasks");
   undoneTasks = task;
+  console.log(undoneTasks);
   localStorage.setItem("allTasks", undoneTasks.outerHTML);
 }
 
 function updateEdit(task) {
-  let editTasks = localStorage.getItem("allTasks");
-  editTasks = task;
-  localStorage.setItem("allTasks", editTasks.outerHTML);
+  let editedText = display.innerHTML;
+  localStorage.setItem("allTasks", editedText);
 }
 
 function check(e) {
@@ -134,8 +131,6 @@ function undo(e) {
     task.firstElementChild.style.textDecoration = "none";
     task.firstElementChild.style.color = "black";
     updateUndo(task);
-    // console.log("Undo clicked, calling delFromLocalStorage");
-    // delFromLocalStorage(task);
   }
 }
 
@@ -147,23 +142,6 @@ function edit(e) {
     return;
   } else {
     text.querySelector("p").textContent = editedText;
-   
+    updateEdit(task);
   }
-  updateEdit(task);
 }
-
-// function updateArrayObj() {
-//   taskContainer.forEach((task) => {
-//     task.progress++;
-//     onProgress.innerHTML = `Todo On Progress: ${task.progress}`;
-//   });
-//   console.log(taskContainer);
-// }
-
-// function DoneBar() {
-//   donContainer.forEach((don) => {
-//     don.done++;
-//     done.innerHTML = `Todo Done: ${don.done}`;
-//   })
-//   console.log(donContainer);
-// }
