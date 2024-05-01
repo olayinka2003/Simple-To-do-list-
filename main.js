@@ -96,17 +96,14 @@ function del(event) {
 }
 
 function updateCheck(task) {
-  let thisTasks = localStorage.getItem("allTasks");
-  thisTasks = task;
-  console.log(thisTasks);
-  localStorage.setItem("allTasks", thisTasks.outerHTML);
+  let thisTasks = display.innerHTML;
+  localStorage.setItem("allTasks", thisTasks);
+ 
 }
 
 function updateUndo(task) {
-  let undoneTasks = localStorage.getItem("allTasks");
-  undoneTasks = task;
-  console.log(undoneTasks);
-  localStorage.setItem("allTasks", undoneTasks.outerHTML);
+  let undoneTasks = display.innerHTML;
+  localStorage.setItem("allTasks", undoneTasks);
 }
 
 function updateEdit(task) {
